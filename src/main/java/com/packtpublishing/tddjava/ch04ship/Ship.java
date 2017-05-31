@@ -3,9 +3,15 @@ package com.packtpublishing.tddjava.ch04ship;
 public class Ship {
 
     private final Location location;
+    private Planet planet;
 
-    public Ship(Location location) {
+    public Ship(Location location, Planet planet) {
         this.location = location;
+        this.planet = planet;
+    }
+
+    public Planet getPlanet() {
+        return planet;
     }
 
     public Location getLocation() {

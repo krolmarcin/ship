@@ -9,73 +9,77 @@ public class ShipSpec {
 
     private Ship ship;
     private Location location;
+    private Planet planet;
 
     @BeforeMethod
     public void beforeTest() {
-        location = new Location(
-                new Point(21, 13), Direction.NORTH);
-        ship = new Ship(location);
+        Point max = new Point(50, 50);
+        location = new Location(new Point(21, 13), Direction.NORTH);
+        planet = new Planet(max);
+        ship = new Ship(location, planet);
     }
 
     public void whenInstantiatedThenLocationIsSet() {
         assertEquals(ship.getLocation(), location);
     }
 
-   public void whenMoveForwardThenForward(){
+    public void whenMoveForwardThenForward() {
         Location expected = location.copy();
         expected.forward();
         ship.moveForward();
         assertEquals(ship.getLocation(), expected);
-   }
+    }
 
-   public void whenMoveBackwardThenBackward(){
-       Location expected = location.copy();
-       expected.backward();
-       ship.moveBackward();
-       assertEquals(ship.getLocation(), expected);
-   }
+    public void whenMoveBackwardThenBackward() {
+        Location expected = location.copy();
+        expected.backward();
+        ship.moveBackward();
+        assertEquals(ship.getLocation(), expected);
+    }
 
-   public void whenTurnLeftThenLeft(){
-       Location expected = location.copy();
-       expected.turnLeft();
-       ship.turnLeft();
-       assertEquals(ship.getLocation(), expected);
-   }
+    public void whenTurnLeftThenLeft() {
+        Location expected = location.copy();
+        expected.turnLeft();
+        ship.turnLeft();
+        assertEquals(ship.getLocation(), expected);
+    }
 
-   public void whenTurnRightThenRight(){
-       Location expected = location.copy();
-       expected.turnRight();
-       ship.turnRight();
-       assertEquals(ship.getLocation(), expected);
-   }
+    public void whenTurnRightThenRight() {
+        Location expected = location.copy();
+        expected.turnRight();
+        ship.turnRight();
+        assertEquals(ship.getLocation(), expected);
+    }
 
-   public void whenReceivedCommandsFThenForward(){
-       Location expected = location.copy();
-       expected.forward();
-       ship.receivedCommands("f");
-       assertEquals(ship.getLocation(), expected);
-   }
+    public void whenReceivedCommandsFThenForward() {
+        Location expected = location.copy();
+        expected.forward();
+        ship.receivedCommands("f");
+        assertEquals(ship.getLocation(), expected);
+    }
 
-    public void whenReceivedCommandsWThenBackward(){
+    public void whenReceivedCommandsWThenBackward() {
         Location expected = location.copy();
         expected.backward();
         ship.receivedCommands("b");
         assertEquals(ship.getLocation(), expected);
     }
-    public void whenReceivedCommandsLThenLeft(){
+
+    public void whenReceivedCommandsLThenLeft() {
         Location expected = location.copy();
         expected.turnLeft();
         ship.receivedCommands("l");
         assertEquals(ship.getLocation(), expected);
     }
-    public void whenReceivedCommandsPThenRight(){
+
+    public void whenReceivedCommandsPThenRight() {
         Location expected = location.copy();
         expected.turnRight();
         ship.receivedCommands("r");
         assertEquals(ship.getLocation(), expected);
     }
 
-    public void whenReceivedCommandsAllAreExecuted(){
+    public void whenReceivedCommandsAllAreExecuted() {
         Location expected = location.copy();
         expected.turnRight();
         expected.forward();
@@ -85,5 +89,8 @@ public class ShipSpec {
         assertEquals(ship.getLocation(), expected);
     }
 
+    public void whenInstantiatedThenPlanetIsStored() {
+        assertEquals(ship.getPlanet(), planet);
+    }
 
 }
