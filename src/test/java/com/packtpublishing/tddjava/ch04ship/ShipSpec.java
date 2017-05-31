@@ -93,4 +93,19 @@ public class ShipSpec {
         assertEquals(ship.getPlanet(), planet);
     }
 
+    public void overpassEastBoundary(){
+        location.setDirection(Direction.EAST);
+        location.getPoint().setX(planet.getMax().getX());
+        ship.receivedCommands("f");
+        assertEquals(location.getX(), 1);
+    }
+
+    public void overpassWestBoundary(){
+        location.setDirection(Direction.WEST);
+        location.getPoint().setX(planet.getMax().getX());
+        ship.receivedCommands("b");
+        assertEquals(location.getX(), 1);
+    }
+
+
 }
