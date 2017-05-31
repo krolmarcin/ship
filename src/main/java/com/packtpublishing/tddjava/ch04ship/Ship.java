@@ -28,4 +28,23 @@ public class Ship {
         location.turnRight();
     }
 
+    public void receivedCommands(String commnands) {
+        for (char command : commnands.toCharArray()) {
+            switch (command) {
+                case 'f':
+                    moveForward();
+                    break;
+                case 'b':
+                    moveBackward();
+                    break;
+                case 'l':
+                    turnLeft();
+                    break;
+                case 'r':
+                    turnRight();
+                    break;
+            }
+        }
+    }
+
 }
